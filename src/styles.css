@@ -1,0 +1,18 @@
+.full-container {
+    display: flex;
+}
+
+.sort {
+    display: flex;
+    flex-direction: column;
+}
+
+.projectList {
+    display: flex;
+    flex-direction: column;
+}
+
+.projectList:hover {
+    background-color: azure;
+    cursor: pointer;
+}
