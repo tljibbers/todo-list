@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector(".full-container")
 const projectList = document.querySelector(".projectList")
+const projectArray = []
 
 export default function createProject(){
     createForm()
@@ -46,6 +47,7 @@ function createForm() {
         })
 
         projectList.appendChild(newProject);
+        projectArray.push(newProject);
         mainContainer.removeChild(form);
         
     })
