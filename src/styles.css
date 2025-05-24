@@ -2,6 +2,11 @@
     display: flex;
 }
 
+.add-Task:hover {
+    background-color: azure;
+    cursor: pointer;
+}
+
 .sort {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 const mainContainer = document.querySelector(".full-container")
 const projectList = document.querySelector(".projectList")
-const projectArray = []
+export const projectArray = []
 
 export default function createProject(){
     createForm()
