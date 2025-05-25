@@ -71,8 +71,10 @@ function createForm(){
     form.addEventListener('submit', function(event){
         event.preventDefault();
         const todo = new Todo(title.value, description.value, dueDate.value, priorityLevel.value, projectBelong.value)
-        console.log(todo)
-         mainContainer.removeChild(form);
+        console.log(todo.belongsTo)
+        mainContainer.removeChild(form);
+        getIdAndCreateBox(todo)
+        
     })
 
     closeButton.addEventListener('click', function(){
@@ -91,6 +93,22 @@ function createFormAssist(projectBelong){
         const name = document.createTextNode(String(projectArray[i].id))
         projectOption.appendChild(name)
         projectBelong.appendChild(projectOption)
+    }
+    
+}
+
+function getIdAndCreateBox(todo){
+    const testDiv = document.createElement("div")
+    const holder = todo.belongsTo + "-container"
+    const lookForId = document.getElementById(holder);
+    if(lookForId)
+    {
+        console.log("hooray")
+        lookForId.append(testDiv)
+    }
+    else
+    {
+        console.log("doesn't exist")
     }
     
 }

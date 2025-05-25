@@ -1,5 +1,6 @@
 const mainContainer = document.querySelector(".full-container")
 const projectList = document.querySelector(".projectList")
+const listView = document.querySelector(".list-view")
 export const projectArray = []
 
 export default function createProject(){
@@ -46,14 +47,32 @@ function createForm() {
             newProject.style.transition = 'background-color 0.2s ease';
         })
 
+        const newProjectContainer = document.createElement("div");
+        newProjectContainer.id = projectName.value + "-container"
+        displayView(newProject, newProjectContainer)
+
         projectList.appendChild(newProject);
         projectArray.push(newProject);
-        mainContainer.removeChild(form);
-        
+        mainContainer.removeChild(form);    
     })
 
     closeButton.addEventListener('click', function(){
         mainContainer.removeChild(form);
     })
 
+}
+
+function displayView(project, container){
+    
+    project.addEventListener("click", function(){
+        removeChild(listView);
+        listView.appendChild(container)
+    })
+
+}
+
+function removeChild(container){
+    while(container.firstChild) {
+        container.removeChild(container.firstChild)
+    }
 }
