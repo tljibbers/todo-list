@@ -2,6 +2,7 @@ const mainContainer = document.querySelector(".full-container")
 const projectList = document.querySelector(".projectList")
 const listView = document.querySelector(".list-view")
 export const projectArray = []
+export const currentProjectNameHolder = []
 
 export default function createProject(){
     createForm()
@@ -49,7 +50,7 @@ function createForm() {
 
         const newProjectContainer = document.createElement("div");
         newProjectContainer.id = projectName.value + "-container"
-        displayView(newProject, newProjectContainer)
+        displayView(newProject, newProjectContainer, currentProjectNameHolder)
 
         projectList.appendChild(newProject);
         projectArray.push(newProject);
@@ -62,11 +63,15 @@ function createForm() {
 
 }
 
-function displayView(project, container){
+function displayView(project, container, holder){
     
     project.addEventListener("click", function(){
+        removeObjectsFromArray(holder)
         removeChild(listView);
         listView.appendChild(container)
+        holder.push(project.id)
+        console.log(holder)
+        
     })
 
 }
@@ -74,5 +79,11 @@ function displayView(project, container){
 function removeChild(container){
     while(container.firstChild) {
         container.removeChild(container.firstChild)
+    }
+}
+
+function removeObjectsFromArray(holder){
+    if(holder.length != 0){
+        holder.pop()
     }
 }

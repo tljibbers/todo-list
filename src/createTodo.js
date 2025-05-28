@@ -1,5 +1,6 @@
 import Todo from "./todo";
 import { projectArray } from "./project";
+import { currentProjectNameHolder } from "./project";
 
 const mainContainer = document.querySelector(".full-container")
 
@@ -61,8 +62,8 @@ function createForm(){
     form.appendChild(description);
     form.appendChild(dueDate);
     form.appendChild(priorityLevel);
-    form.appendChild(projectBelong);
-    createFormAssist(projectBelong);
+    //form.appendChild(projectBelong);
+    //createFormAssist(projectBelong);
     form.appendChild(closeButton);
     form.appendChild(submitButton);
 
@@ -70,9 +71,10 @@ function createForm(){
     
     form.addEventListener('submit', function(event){
         event.preventDefault();
-        const todo = new Todo(title.value, description.value, dueDate.value, priorityLevel.value, projectBelong.value)
-        console.log(todo.belongsTo)
+        const todo = new Todo(title.value, description.value, dueDate.value, priorityLevel.value, currentProjectNameHolder[0])
         mainContainer.removeChild(form);
+        console.log(currentProjectNameHolder)
+        console.log(todo.belongsTo)
         getIdAndCreateBox(todo)
         
     })
@@ -86,16 +88,16 @@ function createForm(){
 
 }
 
-function createFormAssist(projectBelong){
-    for (let i in projectArray) {
-        const projectOption = document.createElement("option");
-        projectOption.setAttribute("value", projectArray[i].id)
-        const name = document.createTextNode(String(projectArray[i].id))
-        projectOption.appendChild(name)
-        projectBelong.appendChild(projectOption)
-    }
+//function createFormAssist(projectBelong){
+    //for (let i in projectArray) {
+        //const projectOption = document.createElement("option");
+        //projectOption.setAttribute("value", projectArray[i].id)
+        //const name = document.createTextNode(String(projectArray[i].id))
+        //projectOption.appendChild(name)
+        //projectBelong.appendChild(projectOption)
+    //}
     
-}
+//}
 
 function getIdAndCreateBox(todo){
     const testDiv = document.createElement("div")
