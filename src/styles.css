@@ -1,10 +1,17 @@
+body{
+    margin: 0;
+    font-family: 'Raleway';
+}
+
 .full-container {
     display: flex;
+    height: 100vh;
 }
 
 .add-Task:hover {
-    background-color: azure;
+    background-color: lavenderblush;
     cursor: pointer;
+    font-size: 45px;
 }
 
 .sort {
@@ -18,6 +25,74 @@
 }
 
 .projectList:hover {
-    background-color: azure;
+    background-color: lavenderblush;
     cursor: pointer;
 }
+
+
+.Dashboard {
+    background-color: honeydew;
+    width: 35vh;
+}
+
+#dash-Title {
+    font-size: 50px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+}
+
+.add-Task {
+    font-size: 40px;
+    padding-bottom: 10px;
+    transition: font-size 0.5s;
+}
+
+.sort-by {
+    font-size: 30px;
+    font-weight: 30px;
+}
+
+.sort {
+    font-size: 18px;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.all-task, .high-priority, .low-priority, .ongoing, .completed {
+    transition: background-color 1s;
+    transition: font-size 0.5s;
+}
+.all-task:hover, .high-priority:hover, .low-priority:hover, .ongoing:hover, .completed:hover{
+    background-color: lavenderblush;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.projectListTitle {
+    font-size: 30px;
+    font-weight: 30px;
+}
+
+
+.add-Task, .sort-by, .sort, .projectListTitle, .projectList {
+    padding-left: 10px;
+}
+
+#createProject {
+    border: none;
+    font-size: large;
+    background-color: honeydew;
+    padding-left: 10px;
+    transition: color 1s;
+    transition: font-size 0.5s;
+
+}
+
+#createProject:hover {
+    cursor: pointer;
+    color: lavender;
+    font-size: larger;
+}
+
+

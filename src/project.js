@@ -27,12 +27,20 @@ function createForm() {
     const closeButton = document.createElement("button")
     closeButton.innerHTML = "Close"
 
+    const layeredMask = document.createElement("div");
+
+    const closeSubmitHolder = document.createElement("div");
+
     form.appendChild(title);
     form.appendChild(projectName);
-    form.appendChild(closeButton);
-    form.appendChild(submitButton);
-
+    closeSubmitHolder.appendChild(closeButton);
+    closeSubmitHolder.appendChild(submitButton);
+    form.appendChild(closeSubmitHolder);
     mainContainer.appendChild(form);
+    styleForm(form, projectName, mainContainer, title, closeSubmitHolder, closeButton, submitButton)
+
+
+    mainContainer.appendChild(layeredMask);
 
     form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -40,11 +48,11 @@ function createForm() {
         newProject.innerHTML = projectName.value;
         newProject.id = projectName.value;
         newProject.addEventListener('mouseenter', function(){
-            newProject.style.backgroundColor = 'azure'
+            newProject.style.backgroundColor = 'lavenderblush'
             newProject.style.transition = 'background-color 0.2s ease';
         })
         newProject.addEventListener('mouseleave', function(){
-            newProject.style.backgroundColor = 'white'
+            newProject.style.backgroundColor = 'honeydew'
             newProject.style.transition = 'background-color 0.2s ease';
         })
 
@@ -54,11 +62,13 @@ function createForm() {
 
         projectList.appendChild(newProject);
         projectArray.push(newProject);
-        mainContainer.removeChild(form);    
+        mainContainer.removeChild(form);
+        mainContainer.style.backgroundColor = "white" 
     })
 
     closeButton.addEventListener('click', function(){
         mainContainer.removeChild(form);
+        mainContainer.style.backgroundColor = "white" 
     })
 
 }
@@ -86,4 +96,32 @@ function removeObjectsFromArray(holder){
     if(holder.length != 0){
         holder.pop()
     }
+}
+
+function styleForm(form, input, mainContainer, title, closeSubmitHolder, closeButton, submitButton){
+    form.style.backgroundColor = "lavender"
+    form.style.width = "400px"
+    form.style.height = "200px"
+    form.style.borderRadius = "10px"
+    form.style.marginLeft = "50vh"
+    form.style.marginTop = "30vh"
+    input.style.borderRadius = "5px"
+    input.style.borderStyle = "solid"
+    input.style.width = "70%"
+    input.style.height = "15%"
+    input.style.marginBottom = "5%"
+    input.style.marginLeft = "15%"
+    title.style.marginLeft = "15%"
+    title.style.marginTop = "10%"
+    closeSubmitHolder.style.display = "flex"
+    closeSubmitHolder.style.justifyContent = "space-around"
+    closeButton.style.width = "110px"
+    submitButton.style.width = "110px"
+    closeButton.style.height = "60px"
+    submitButton.style.height = "60px"
+    closeButton.style.border = "none"
+    submitButton.style.border = "none"
+    closeButton.style.borderRadius = "5px"
+    submitButton.style.borderRadius = "5px"
+    mainContainer.style.backgroundColor = "#fcfcfc"
 }

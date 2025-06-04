@@ -5,12 +5,12 @@ import { currentProjectNameHolder } from "./project";
 const mainContainer = document.querySelector(".full-container")
 
 export default function createTodo(){
-    if(projectArray.length != 0)
+    if(projectArray.length != 0 && currentProjectNameHolder.length != 0)
     {
         createForm()
     }
     else{
-        alert("Must Create A Project Before Creating A Task.")
+        alert("Must Create Or Select A Project Before Creating A Task.")
     }
 }
 
