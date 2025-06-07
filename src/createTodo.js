@@ -30,7 +30,7 @@ function createForm(){
     const dueDate = document.createElement("input");
     dueDate.setAttribute('type', 'text');
     dueDate.setAttribute('name', 'dueDateText');
-    dueDate.setAttribute('placeholder', 'Enter Date');
+    dueDate.setAttribute('placeholder', 'Enter Due Date');
 
     const priorityLevel = document.createElement("select");
     priorityLevel.setAttribute("id", "priority-Level")
@@ -55,17 +55,33 @@ function createForm(){
     const closeButton = document.createElement("button")
     closeButton.innerHTML = "Close"
 
+    const closeSubmitContainer = document.createElement("div")
+
+    const titleText = document.createElement("div")
+    const dueDateLabel = document.createElement("div")
+    const priorityLabel =  document.createElement("div")
+    const descriptionLabel = document.createElement("div")
+
+    titleText.innerHTML = "Name of Task:"
+    dueDateLabel.innerHTML = "Due Date:"
+    priorityLabel.innerHTML = "Priority Level:"
+    descriptionLabel.innerHTML = "Description:"
+
     priorityLevel.appendChild(highOption);
     priorityLevel.appendChild(lowOption);
 
+    form.appendChild(titleText);
     form.appendChild(title);
-    form.appendChild(description);
+    form.appendChild(dueDateLabel);
     form.appendChild(dueDate);
+    form.appendChild(descriptionLabel);
+    form.appendChild(description);
+    form.appendChild(priorityLabel);
     form.appendChild(priorityLevel);
-    //form.appendChild(projectBelong);
-    //createFormAssist(projectBelong);
-    form.appendChild(closeButton);
-    form.appendChild(submitButton);
+    closeSubmitContainer.appendChild(closeButton);
+    closeSubmitContainer.appendChild(submitButton);
+    form.appendChild(closeSubmitContainer)
+    styleAddTaskForm(form, titleText, title, dueDateLabel, dueDate, priorityLabel, priorityLevel, descriptionLabel, description, closeSubmitContainer, closeButton, submitButton)
 
     mainContainer.appendChild(form);
     
@@ -88,16 +104,7 @@ function createForm(){
 
 }
 
-//function createFormAssist(projectBelong){
-    //for (let i in projectArray) {
-        //const projectOption = document.createElement("option");
-        //projectOption.setAttribute("value", projectArray[i].id)
-        //const name = document.createTextNode(String(projectArray[i].id))
-        //projectOption.appendChild(name)
-        //projectBelong.appendChild(projectOption)
-    //}
-    
-//}
+
 
 function getIdAndCreateBox(todo){
     const testDiv = document.createElement("div")
@@ -113,4 +120,98 @@ function getIdAndCreateBox(todo){
         console.log("doesn't exist")
     }
     
+}
+
+function styleAddTaskForm(form, taskText, task, dateText, date, priorityLabel, priorityLevel, descriptionLabel, description, closeSubmitHolder, closeButton, submitButton){
+    form.style.backgroundColor = "lavender"
+    form.style.width = "700px"
+    form.style.height = "500px"
+    form.style.borderRadius = "10px"
+    form.style.marginLeft = "35vh"
+    form.style.marginTop = "20vh"
+    form.style.boxShadow = '5px 5px 5px lightgray'
+    form.style.display = "flex"
+    form.style.flexDirection = "column"
+
+    taskText.style.marginLeft = "22%"
+    taskText.style.marginTop = "70px"
+    taskText.style.fontSize = "larger"
+
+    task.style.width = "400px"
+    task.style.height = "30px"
+    task.style.borderRadius = "5px"
+    task.style.borderStyle = "solid"
+    task.style.borderColor = "black"
+    task.style.marginLeft = "22%"
+    task.style.marginBottom = "10px"
+
+    dateText.style.marginLeft = "22%"
+    dateText.style.marginTop = "10px"
+    dateText.style.fontSize = "larger"
+
+    date.style.width = "400px"
+    date.style.height = "30px"
+    date.style.borderRadius = "5px"
+    date.style.borderStyle = "solid"
+    date.style.borderColor = "black"
+    date.style.marginLeft = "22%"
+    date.style.marginBottom = "10px"
+
+    priorityLabel.style.marginLeft = "22%"
+    priorityLabel.style.marginTop = "5px"
+    priorityLabel.style.fontSize = "larger"
+
+    priorityLevel.style.width = "400px"
+    priorityLevel.style.height = "30px"
+    priorityLevel.style.borderRadius = "5px"
+    priorityLevel.style.borderStyle = "solid"
+    priorityLevel.style.borderColor = "black"
+    priorityLevel.style.marginLeft = "22%"
+    priorityLevel.style.marginBottom = "15px"
+
+    descriptionLabel.style.marginLeft = "22%"
+    descriptionLabel.style.marginTop = "10px"
+    descriptionLabel.style.fontSize = "larger"
+
+    description.style.width = "400px"
+    description.style.height = "30px"
+    description.style.borderRadius = "5px"
+    description.style.borderStyle = "solid"
+    description.style.borderColor = "black"
+    description.style.marginLeft = "22%"
+    description.style.marginBottom = "20px"
+    
+    closeSubmitHolder.style.display = "flex"
+    closeSubmitHolder.style.justifyContent = "space-around"
+    closeButton.style.width = "110px"
+    submitButton.style.width = "110px"
+    closeButton.style.height = "60px"
+    submitButton.style.height = "60px"
+    closeButton.style.border = "none"
+    submitButton.style.border = "none"
+    closeButton.style.borderRadius = "5px"
+    submitButton.style.borderRadius = "5px"
+    closeButton.style.backgroundColor = "white"
+    submitButton.style.backgroundColor = "white"
+
+    closeButton.addEventListener("mouseover", function(){
+        closeButton.style.cursor = "pointer";
+        closeButton.style.backgroundColor = "#FF7F7F"
+    })
+
+    closeButton.addEventListener("mouseleave", function(){
+        closeButton.style.backgroundColor = "white"
+    })
+
+    submitButton.addEventListener("mouseover", function(){
+        submitButton.style.cursor = "pointer";
+        submitButton.style.backgroundColor = "#80EF80"
+    })
+
+    submitButton.addEventListener("mouseleave", function(){
+        submitButton.style.backgroundColor = "white"
+    })
+    
+    
+
 }

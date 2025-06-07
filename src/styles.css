@@ -22,10 +22,11 @@ body{
 .projectList {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
 }
 
 .projectList:hover {
-    background-color: lavenderblush;
     cursor: pointer;
 }
 
@@ -33,6 +34,7 @@ body{
 .Dashboard {
     background-color: honeydew;
     width: 35vh;
+    box-shadow: 1px 0px 5px lightgray;
 }
 
 #dash-Title {
@@ -81,18 +83,19 @@ body{
 
 #createProject {
     border: none;
-    font-size: large;
+    font-size: 30px;
     background-color: honeydew;
     padding-left: 10px;
     transition: color 1s;
     transition: font-size 0.5s;
+    padding-top: 5px;
 
 }
 
 #createProject:hover {
     cursor: pointer;
     color: lavender;
-    font-size: larger;
+    font-size: 35px;
 }
 
 

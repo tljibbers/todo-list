@@ -4,6 +4,7 @@ const listView = document.querySelector(".list-view")
 export const projectArray = []
 export const currentProjectNameHolder = []
 
+
 export default function createProject(){
     createForm()
     
@@ -37,7 +38,7 @@ function createForm() {
     closeSubmitHolder.appendChild(submitButton);
     form.appendChild(closeSubmitHolder);
     mainContainer.appendChild(form);
-    styleForm(form, projectName, mainContainer, title, closeSubmitHolder, closeButton, submitButton)
+    styleForm(form, projectName, title, closeSubmitHolder, closeButton, submitButton)
 
 
     mainContainer.appendChild(layeredMask);
@@ -50,11 +51,17 @@ function createForm() {
         newProject.addEventListener('mouseenter', function(){
             newProject.style.backgroundColor = 'lavenderblush'
             newProject.style.transition = 'background-color 0.2s ease';
+            newProject.style.fontSize = 'larger'
+            newProject.style.transition = 'font-size 0.5s ease'
         })
         newProject.addEventListener('mouseleave', function(){
             newProject.style.backgroundColor = 'honeydew'
             newProject.style.transition = 'background-color 0.2s ease';
+            newProject.style.fontSize = '18px'
+            newProject.style.transition = 'font-size 0.5s ease'
+
         })
+
 
         const newProjectContainer = document.createElement("div");
         newProjectContainer.id = projectName.value + "-container"
@@ -74,14 +81,13 @@ function createForm() {
 }
 
 function displayView(project, container, holder){
-    
     project.addEventListener("click", function(){
         removeObjectsFromArray(holder)
         removeChild(listView);
         listView.appendChild(container)
         holder.push(project.id)
         console.log(holder)
-        
+        checkForTextChange()
     })
 
 }
@@ -98,13 +104,14 @@ function removeObjectsFromArray(holder){
     }
 }
 
-function styleForm(form, input, mainContainer, title, closeSubmitHolder, closeButton, submitButton){
+function styleForm(form, input, title, closeSubmitHolder, closeButton, submitButton){
     form.style.backgroundColor = "lavender"
     form.style.width = "400px"
     form.style.height = "200px"
     form.style.borderRadius = "10px"
     form.style.marginLeft = "50vh"
     form.style.marginTop = "30vh"
+    form.style.boxShadow = '5px 5px 5px lightgray'
     input.style.borderRadius = "5px"
     input.style.borderStyle = "solid"
     input.style.width = "70%"
@@ -123,5 +130,38 @@ function styleForm(form, input, mainContainer, title, closeSubmitHolder, closeBu
     submitButton.style.border = "none"
     closeButton.style.borderRadius = "5px"
     submitButton.style.borderRadius = "5px"
-    mainContainer.style.backgroundColor = "#fcfcfc"
+    closeButton.style.backgroundColor = "white"
+    submitButton.style.backgroundColor = "white"
+
+    closeButton.addEventListener("mouseover", function(){
+        closeButton.style.cursor = "pointer";
+        closeButton.style.backgroundColor = "#FF7F7F"
+    })
+
+    closeButton.addEventListener("mouseleave", function(){
+        closeButton.style.backgroundColor = "white"
+    })
+
+    submitButton.addEventListener("mouseover", function(){
+        submitButton.style.cursor = "pointer";
+        submitButton.style.backgroundColor = "#80EF80"
+    })
+
+    submitButton.addEventListener("mouseleave", function(){
+        submitButton.style.backgroundColor = "white"
+    })
+}
+
+function checkForTextChange(){
+    const getElements = projectList.querySelectorAll('*');
+
+    getElements.forEach(element => {
+        if(element.id == currentProjectNameHolder[0])
+        {
+            element.style.color = "green"
+        }
+        else{
+            element.style.color = "black"
+        }
+    })
 }
