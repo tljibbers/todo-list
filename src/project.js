@@ -66,6 +66,7 @@ function createForm() {
         const newProjectContainer = document.createElement("div");
         newProjectContainer.id = projectName.value + "-container"
         displayView(newProject, newProjectContainer, currentProjectNameHolder)
+        gridStyle(newProjectContainer)
 
         projectList.appendChild(newProject);
         projectArray.push(newProject);
@@ -164,4 +165,10 @@ function checkForTextChange(){
             element.style.color = "black"
         }
     })
+}
+
+function gridStyle(gridContainer){
+    gridContainer.style.display = "grid"
+    gridContainer.style.gridAutoFlow = "column"
+    gridContainer.style.gridAutoColumns = "100px"
 }

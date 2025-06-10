@@ -53,6 +53,7 @@ body{
 .sort-by {
     font-size: 30px;
     font-weight: 30px;
+    text-decoration: underline;
 }
 
 .sort {
@@ -74,6 +75,7 @@ body{
 .projectListTitle {
     font-size: 30px;
     font-weight: 30px;
+    text-decoration: underline;
 }
 
 

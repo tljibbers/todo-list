@@ -1,6 +1,7 @@
 import Todo from "./todo";
 import { projectArray } from "./project";
 import { currentProjectNameHolder } from "./project";
+import createTask from "./task";
 
 const mainContainer = document.querySelector(".full-container")
 
@@ -107,13 +108,12 @@ function createForm(){
 
 
 function getIdAndCreateBox(todo){
-    const testDiv = document.createElement("div")
     const holder = todo.belongsTo + "-container"
     const lookForId = document.getElementById(holder);
     if(lookForId)
     {
         console.log("hooray")
-        lookForId.append(testDiv)
+        createTask(todo, lookForId)
     }
     else
     {
@@ -127,11 +127,13 @@ function styleAddTaskForm(form, taskText, task, dateText, date, priorityLabel, p
     form.style.width = "700px"
     form.style.height = "500px"
     form.style.borderRadius = "10px"
-    form.style.marginLeft = "35vh"
-    form.style.marginTop = "20vh"
+    form.style.left = "70vh"
+    form.style.top = "20vh"
     form.style.boxShadow = '5px 5px 5px lightgray'
     form.style.display = "flex"
     form.style.flexDirection = "column"
+    form.style.zIndex = 999
+    form.style.position = "absolute"
 
     taskText.style.marginLeft = "22%"
     taskText.style.marginTop = "70px"
