@@ -35,6 +35,9 @@ body{
     background-color: honeydew;
     width: 35vh;
     box-shadow: 1px 0px 5px lightgray;
+    position: sticky;
+    left: 0;
+    z-index: 999;
 }
 
 #dash-Title {

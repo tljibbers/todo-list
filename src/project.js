@@ -110,9 +110,11 @@ function styleForm(form, input, title, closeSubmitHolder, closeButton, submitBut
     form.style.width = "400px"
     form.style.height = "200px"
     form.style.borderRadius = "10px"
-    form.style.marginLeft = "50vh"
+    form.style.marginLeft = "85vh"
     form.style.marginTop = "30vh"
     form.style.boxShadow = '5px 5px 5px lightgray'
+    form.style.zIndex = 999
+    form.style.position = "absolute"
     input.style.borderRadius = "5px"
     input.style.borderStyle = "solid"
     input.style.width = "70%"
@@ -167,8 +169,15 @@ function checkForTextChange(){
     })
 }
 
-function gridStyle(gridContainer){
+export function gridStyle(gridContainer){
+    
     gridContainer.style.display = "grid"
+    gridContainer.style.gridAutoColumns = "300px"
     gridContainer.style.gridAutoFlow = "column"
-    gridContainer.style.gridAutoColumns = "100px"
+    gridContainer.style.gridTemplateColumns = "300px 300px 300px"
+    gridContainer.style.gridTemplateRows = "200px 200px 200px"
+    gridContainer.style.gap = "10px"
+    gridContainer.style.rowGap = "15px"
+    gridContainer.style.marginLeft = "30px"
+    gridContainer.style.marginTop = "80px"
 }

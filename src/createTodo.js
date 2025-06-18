@@ -4,6 +4,11 @@ import { currentProjectNameHolder } from "./project";
 import createTask from "./task";
 
 const mainContainer = document.querySelector(".full-container")
+export let allArray = [];
+export let highPriorityArray = [];
+export let lowPriorityArray = [];
+export let ongoingArray = [];
+export let completedArray = [];
 
 export default function createTodo(){
     if(projectArray.length != 0 && currentProjectNameHolder.length != 0)
@@ -93,6 +98,7 @@ function createForm(){
         console.log(currentProjectNameHolder)
         console.log(todo.belongsTo)
         getIdAndCreateBox(todo)
+        addToSortBy(todo)
         
     })
 
@@ -215,5 +221,50 @@ function styleAddTaskForm(form, taskText, task, dateText, date, priorityLabel, p
     })
     
     
+
+}
+
+function addToSortBy(todo)
+{
+    allArray.push(todo)
+
+    if(todo.priorityLevel == "high")
+    {
+        highPriorityArray.push(todo)
+    }
+    else if(todo.priorityLevel == "low")
+    {
+        lowPriorityArray.push(todo)
+    }
+
+    const date = new Date()
+    const currentDate = date.toDateString()
+    console.log(currentDate)
+
+    const inputDate = Date.parse(todo.dueDate)
+    const newDate = new Date(inputDate)
+    console.log(newDate)
+
+    if(inputDate > date)
+    {
+        ongoingArray.push(todo)
+        console.log(ongoingArray)
+    }
+    else if(inputDate < date)
+    {
+        completedArray.push(todo)
+        console.log(completedArray)
+    }
+
+
+
+
+
+}
+
+function removeSortByCategories(todo, array)
+{
+    const index = array.indexOf(todo)
+    array.splice(index, 1)
 
 }
