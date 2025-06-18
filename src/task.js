@@ -1,3 +1,4 @@
+import { removeSortByCategoriesChecker } from "./createTodo";
 
 export default function createTask(task, holder){
     const taskPriorityColor = document.createElement("div");
@@ -106,6 +107,7 @@ function taskOnClick(task)
 
     button.addEventListener("click", function(){
         mainContainer.removeChild(descriptionHolder)
+        removeSortByCategoriesChecker(task)
     })
 
     button.addEventListener("mouseover", function(){

@@ -268,3 +268,26 @@ function removeSortByCategories(todo, array)
     array.splice(index, 1)
 
 }
+
+export function removeSortByCategoriesChecker(task)
+{
+    removeSortByCategories(task, allArray)
+
+    if(highPriorityArray.includes(task))
+    {
+        removeSortByCategories(task, highPriorityArray)
+    }
+    else if(lowPriorityArray.includes(task))
+    {
+        removeSortByCategories(task, lowPriorityArray)
+    }
+
+    if(ongoingArray.includes(task))
+    {
+        removeSortByCategories(task, ongoingArray)
+    }
+    else if(completedArray.includes(task))
+    {
+        removeSortByCategories(task, completedArray)
+    }
+}
